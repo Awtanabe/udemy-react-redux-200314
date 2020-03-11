@@ -6,28 +6,16 @@ import {BrowserRouter, Route} from 'react-router-dom'
 
 // BrowserRouterはhistoryの役割
 // Routeはルーティングのマッピング
-
-import App from './components/app';
 import reducers from './reducers';
+import PostsIndex from './components/posts_index'
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
-
-class Hello extends React.Component {
-  render() { return <div>Hello!</div>}
-}
-
-
-class Goodbye extends React.Component {
-  render() { return <div>Goodbye!</div>}
-}
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     <BrowserRouter>
       <div>
-        Header
-        <Route path="/hello" component={Hello}/>
-        <Route path="/goodby" component={Goodbye}/> 
+       <Route path="/" component={PostsIndex}/>
       </div>
     </BrowserRouter>
   </Provider>
