@@ -31,6 +31,7 @@ class PostsNew extends Component {
 
 // Title とTags類似なのでまとめる
   renderField(field){
+    debugger
     return (
       <div className="form-group">
         <label>{field.label}</label>
@@ -39,6 +40,7 @@ class PostsNew extends Component {
 　         type="text"
           {...field.input}
         />
+        {field.meta.error}
       </div>
     )
   }
@@ -55,8 +57,8 @@ class PostsNew extends Component {
             component={this.renderField}
           />
           <Field
-            name="Categoris"
-            label="categories"
+            name="categories"
+            label="Categories"
             component={this.renderField}
           />
             <Field
@@ -70,7 +72,26 @@ class PostsNew extends Component {
   }
 }
 
+function validate(values) {
+  const errors = {}
+  
+  if ( !values.title) {
+    errors.title = 'Enture a usernmae'
+  }
+
+  if (!values.categories) {
+    errors.categories = 'Enture a categories'
+  }
+
+  if (!values.content) {
+    errors.content = 'Enture a content'
+  }
+
+  return errors
+}
+
 export default reduxForm({
+  validate: validate,
   form: 'PostsNewForm'
 })(PostsNew);
 
