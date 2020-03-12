@@ -31,7 +31,6 @@ class PostsNew extends Component {
 
 // Title とTags類似なのでまとめる
   renderField(field){
-    debugger
     return (
       <div className="form-group">
         <label>{field.label}</label>
@@ -40,17 +39,25 @@ class PostsNew extends Component {
 　         type="text"
           {...field.input}
         />
-        {field.meta.error}
+        <div className="text-help">
+          {field.meta.error}  
+        </div>
       </div>
     )
   }
 
+  onSubmit(values){
+    console.log(values)
+  }
+
   
   render() {
+    const { handleSubmit } = this.props
+  
     return (
       <div>
         Posts new
-        <form>
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field
             name="title"
             label="Title"
@@ -66,6 +73,7 @@ class PostsNew extends Component {
             label="Post Content"
             component={this.renderField}
           />
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
       </div>
     )
