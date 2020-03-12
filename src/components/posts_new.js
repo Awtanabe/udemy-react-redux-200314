@@ -3,9 +3,37 @@ import { Field, reduxForm } from 'redux-form'
 
 class PostsNew extends Component {
 
-  renderTitleField(field){
+//   renderTitleField(field){
+//     return (
+//       <div className="form-group">
+//         <label>Title</label>
+//         <input 
+//           // onChange={field.input.onCHange}これらが..で含まれている
+// 　         type="text"
+//           {...field.input}
+//         />
+//       </div>
+//     )
+//   }
+
+//   renderTagsField(field){
+//     return (
+//       <div className="form-group">
+//         <label>Tags</label>
+//         <input 
+//           // onChange={field.input.onCHange}これらが..で含まれている
+// 　         type="text"
+//           {...field.input}
+//         />
+//       </div>
+//     )
+//   }
+
+// Title とTags類似なのでまとめる
+  renderField(field){
     return (
-      <div>
+      <div className="form-group">
+        <label>{field.label}</label>
         <input 
           // onChange={field.input.onCHange}これらが..で含まれている
 　         type="text"
@@ -13,8 +41,9 @@ class PostsNew extends Component {
         />
       </div>
     )
-
   }
+
+  
   render() {
     return (
       <div>
@@ -22,7 +51,18 @@ class PostsNew extends Component {
         <form>
           <Field
             name="title"
-            component={this.renderTitleField}
+            label="Title"
+            component={this.renderField}
+          />
+          <Field
+            name="Categoris"
+            label="categories"
+            component={this.renderField}
+          />
+            <Field
+            name="content"
+            label="Post Content"
+            component={this.renderField}
           />
         </form>
       </div>
