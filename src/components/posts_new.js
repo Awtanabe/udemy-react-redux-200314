@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Field, reduxForm } from 'redux-form'
 
 class PostsNew extends Component {
 
@@ -11,4 +12,13 @@ class PostsNew extends Component {
   }
 }
 
-export default PostsNew;
+export default reudxForm({
+  form: 'PostsNewForm'
+})(PostsNew);
+
+
+// PostsEdit.js 編集でもこれが使えるみたい
+
+// export default reudxForm({
+//   form: 'PostsNewForm'
+// })(PostsNew);
