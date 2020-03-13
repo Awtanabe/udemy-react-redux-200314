@@ -32,7 +32,7 @@ class PostsNew extends Component {
 // Title とTags類似なのでまとめる
   renderField(field){
     return (
-      <div className="form-group">
+      <div className="form-group has-danger">
         <label>{field.label}</label>
         <input 
           // onChange={field.input.onCHange}これらが..で含まれている
