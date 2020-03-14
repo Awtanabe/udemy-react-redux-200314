@@ -8,6 +8,9 @@ const initialState = {
 
 export default function(state = {}, action) {
   switch (action.type) {
+    case DELETE_POST:
+      // omitは特定のidを除くらしい  action.payload == idだからね
+      return _.omit(state, action.payload)
     case FETCH_POST:
       // const post = action.payload.data
       // const newState = { ...state}
